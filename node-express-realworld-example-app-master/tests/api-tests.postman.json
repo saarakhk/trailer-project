@@ -237,7 +237,7 @@
       ]
     },
     {
-      "name": "Articles with authentication",
+      "name": "Trailers with authentication",
       "description": "",
       "item": [{
           "name": "Feed",
@@ -253,29 +253,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -283,7 +283,7 @@
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles/feed",
+            "url": "{{apiUrl}}/trailers/feed",
             "method": "GET",
             "header": [{
                 "key": "Content-Type",
@@ -310,7 +310,7 @@
           "response": []
         },
         {
-          "name": "All Articles",
+          "name": "All Trailers",
           "event": [{
             "listen": "test",
             "script": {
@@ -323,29 +323,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -353,7 +353,7 @@
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles",
+            "url": "{{apiUrl}}/trailers",
             "method": "GET",
             "header": [{
                 "key": "Content-Type",
@@ -380,7 +380,7 @@
           "response": []
         },
         {
-          "name": "All Articles with auth",
+          "name": "All Trailers with auth",
           "event": [{
             "listen": "test",
             "script": {
@@ -393,29 +393,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -423,7 +423,7 @@
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles",
+            "url": "{{apiUrl}}/trailers",
             "method": "GET",
             "header": [{
                 "key": "Content-Type",
@@ -450,7 +450,7 @@
           "response": []
         },
         {
-          "name": "Articles by Author",
+          "name": "Trailers by Author",
           "event": [{
             "listen": "test",
             "script": {
@@ -463,29 +463,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -494,12 +494,12 @@
           }],
           "request": {
             "url": {
-              "raw": "{{apiUrl}}/articles?author=johnjacob",
+              "raw": "{{apiUrl}}/trailers?author=johnjacob",
               "host": [
                 "{{apiUrl}}"
               ],
               "path": [
-                "articles"
+                "trailers"
               ],
               "query": [{
                 "key": "author",
@@ -533,7 +533,7 @@
           "response": []
         },
         {
-          "name": "Articles by Author with auth",
+          "name": "Trailers by Author with auth",
           "event": [{
             "listen": "test",
             "script": {
@@ -546,29 +546,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -577,12 +577,12 @@
           }],
           "request": {
             "url": {
-              "raw": "{{apiUrl}}/articles?author=johnjacob",
+              "raw": "{{apiUrl}}/trailers?author=johnjacob",
               "host": [
                 "{{apiUrl}}"
               ],
               "path": [
-                "articles"
+                "trailers"
               ],
               "query": [{
                 "key": "author",
@@ -615,7 +615,7 @@
           "response": []
         },
         {
-          "name": "Articles Favorited by Username",
+          "name": "Trailers Favorited by Username",
           "event": [{
             "listen": "test",
             "script": {
@@ -628,29 +628,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "    ",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -659,12 +659,12 @@
           }],
           "request": {
             "url": {
-              "raw": "{{apiUrl}}/articles?favorited=jane",
+              "raw": "{{apiUrl}}/trailers?favorited=jane",
               "host": [
                 "{{apiUrl}}"
               ],
               "path": [
-                "articles"
+                "trailers"
               ],
               "query": [{
                 "key": "favorited",
@@ -698,7 +698,7 @@
           "response": []
         },
         {
-          "name": "Articles Favorited by Username with auth",
+          "name": "Trailers Favorited by Username with auth",
           "event": [{
             "listen": "test",
             "script": {
@@ -711,29 +711,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "    ",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -742,12 +742,12 @@
           }],
           "request": {
             "url": {
-              "raw": "{{apiUrl}}/articles?favorited=jane",
+              "raw": "{{apiUrl}}/trailers?favorited=jane",
               "host": [
                 "{{apiUrl}}"
               ],
               "path": [
-                "articles"
+                "trailers"
               ],
               "query": [{
                 "key": "favorited",
@@ -781,7 +781,7 @@
           "response": []
         },
         {
-          "name": "Articles by Tag",
+          "name": "Trailers by Tag",
           "event": [{
             "listen": "test",
             "script": {
@@ -794,29 +794,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -825,12 +825,12 @@
           }],
           "request": {
             "url": {
-              "raw": "{{apiUrl}}/articles?tag=dragons",
+              "raw": "{{apiUrl}}/trailers?tag=dragons",
               "host": [
                 "{{apiUrl}}"
               ],
               "path": [
-                "articles"
+                "trailers"
               ],
               "query": [{
                 "key": "tag",
@@ -864,7 +864,7 @@
           "response": []
         },
         {
-          "name": "Create Article",
+          "name": "Create Trailer",
           "event": [{
             "listen": "test",
             "script": {
@@ -872,33 +872,33 @@
               "exec": [
                 "var responseJSON = JSON.parse(responseBody);",
                 "",
-                "tests['Response contains \"article\" property'] = responseJSON.hasOwnProperty('article');",
+                "tests['Response contains \"trailer\" property'] = responseJSON.hasOwnProperty('trailer');",
                 "",
-                "var article = responseJSON.article || {};",
+                "var trailer = responseJSON.trailer || {};",
                 "",
-                "tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "if(tests['Article has \"slug\" property']){",
-                "    postman.setEnvironmentVariable('slug', article.slug);",
+                "tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "if(tests['Trailer has \"slug\" property']){",
+                "    postman.setEnvironmentVariable('slug', trailer.slug);",
                 "}",
-                "tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 ""
               ]
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles",
+            "url": "{{apiUrl}}/trailers",
             "method": "POST",
             "header": [{
                 "key": "Content-Type",
@@ -918,14 +918,14 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"article\":{\"title\":\"How to train your dragon\", \"description\":\"Ever wonder how?\", \"body\":\"Very carefully.\", \"tagList\":[\"dragons\",\"training\"]}}"
+              "raw": "{\"trailer\":{\"title\":\"How to train your dragon\", \"description\":\"Ever wonder how?\", \"body\":\"Very carefully.\", \"tagList\":[\"dragons\",\"training\"]}}"
             },
             "description": ""
           },
           "response": []
         },
         {
-          "name": "Single Article by slug",
+          "name": "Single Trailer by slug",
           "event": [{
             "listen": "test",
             "script": {
@@ -933,30 +933,30 @@
               "exec": [
                 "var responseJSON = JSON.parse(responseBody);",
                 "",
-                "tests['Response contains \"article\" property'] = responseJSON.hasOwnProperty('article');",
+                "tests['Response contains \"trailer\" property'] = responseJSON.hasOwnProperty('trailer');",
                 "",
-                "var article = responseJSON.article || {};",
+                "var trailer = responseJSON.trailer || {};",
                 "",
-                "tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 ""
               ]
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles/{{slug}}",
+            "url": "{{apiUrl}}/trailers/{{slug}}",
             "method": "GET",
             "header": [{
                 "key": "Content-Type",
@@ -980,7 +980,7 @@
           "response": []
         },
         {
-          "name": "Update Article",
+          "name": "Update Trailer",
           "event": [{
             "listen": "test",
             "script": {
@@ -989,31 +989,31 @@
                 "if (!(environment.isIntegrationTest)) {",
                 "var responseJSON = JSON.parse(responseBody);",
                 "",
-                "tests['Response contains \"article\" property'] = responseJSON.hasOwnProperty('article');",
+                "tests['Response contains \"trailer\" property'] = responseJSON.hasOwnProperty('trailer');",
                 "",
-                "var article = responseJSON.article || {};",
+                "var trailer = responseJSON.trailer || {};",
                 "",
-                "tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "}",
                 ""
               ]
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles/{{slug}}",
+            "url": "{{apiUrl}}/trailers/{{slug}}",
             "method": "PUT",
             "header": [{
                 "key": "Content-Type",
@@ -1033,14 +1033,14 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"article\":{\"body\":\"With two hands\"}}"
+              "raw": "{\"trailer\":{\"body\":\"With two hands\"}}"
             },
             "description": ""
           },
           "response": []
         },
         {
-          "name": "Favorite Article",
+          "name": "Favorite Trailer",
           "event": [{
             "listen": "test",
             "script": {
@@ -1048,32 +1048,32 @@
               "exec": [
                 "var responseJSON = JSON.parse(responseBody);",
                 "",
-                "tests['Response contains \"article\" property'] = responseJSON.hasOwnProperty('article');",
+                "tests['Response contains \"trailer\" property'] = responseJSON.hasOwnProperty('trailer');",
                 "",
-                "var article = responseJSON.article || {};",
+                "var trailer = responseJSON.trailer || {};",
                 "",
-                "tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "tests[\"Article's 'favorited' property is true\"] = article.favorited === true;",
-                "tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
-                "tests[\"Article's 'favoritesCount' property is greater than 0\"] = article.favoritesCount > 0;",
+                "tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "tests[\"Trailer's 'favorited' property is true\"] = trailer.favorited === true;",
+                "tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
+                "tests[\"Trailer's 'favoritesCount' property is greater than 0\"] = trailer.favoritesCount > 0;",
                 ""
               ]
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles/{{slug}}/favorite",
+            "url": "{{apiUrl}}/trailers/{{slug}}/favorite",
             "method": "POST",
             "header": [{
                 "key": "Content-Type",
@@ -1100,7 +1100,7 @@
           "response": []
         },
         {
-          "name": "Unfavorite Article",
+          "name": "Unfavorite Trailer",
           "event": [{
             "listen": "test",
             "script": {
@@ -1108,31 +1108,31 @@
               "exec": [
                 "var responseJSON = JSON.parse(responseBody);",
                 "",
-                "tests['Response contains \"article\" property'] = responseJSON.hasOwnProperty('article');",
+                "tests['Response contains \"trailer\" property'] = responseJSON.hasOwnProperty('trailer');",
                 "",
-                "var article = responseJSON.article || {};",
+                "var trailer = responseJSON.trailer || {};",
                 "",
-                "tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
-                "tests[\"Article's \\\"favorited\\\" property is true\"] = article.favorited === false;",
+                "tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
+                "tests[\"Trailer's \\\"favorited\\\" property is true\"] = trailer.favorited === false;",
                 ""
               ]
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles/{{slug}}/favorite",
+            "url": "{{apiUrl}}/trailers/{{slug}}/favorite",
             "method": "DELETE",
             "header": [{
                 "key": "Content-Type",
@@ -1161,10 +1161,10 @@
       ]
     },
     {
-      "name": "Articles",
+      "name": "Trailers",
       "description": "",
       "item": [{
-          "name": "All Articles",
+          "name": "All Trailers",
           "event": [{
             "listen": "test",
             "script": {
@@ -1177,29 +1177,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -1207,7 +1207,7 @@
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles",
+            "url": "{{apiUrl}}/trailers",
             "method": "GET",
             "header": [{
                 "key": "Content-Type",
@@ -1229,7 +1229,7 @@
           "response": []
         },
         {
-          "name": "Articles by Author",
+          "name": "Trailers by Author",
           "event": [{
             "listen": "test",
             "script": {
@@ -1242,29 +1242,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -1273,12 +1273,12 @@
           }],
           "request": {
             "url": {
-              "raw": "{{apiUrl}}/articles?author=johnjacob",
+              "raw": "{{apiUrl}}/trailers?author=johnjacob",
               "host": [
                 "{{apiUrl}}"
               ],
               "path": [
-                "articles"
+                "trailers"
               ],
               "query": [{
                 "key": "author",
@@ -1307,7 +1307,7 @@
           "response": []
         },
         {
-          "name": "Articles Favorited by Username",
+          "name": "Trailers Favorited by Username",
           "event": [{
             "listen": "test",
             "script": {
@@ -1320,29 +1320,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "    ",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -1351,12 +1351,12 @@
           }],
           "request": {
             "url": {
-              "raw": "{{apiUrl}}/articles?favorited=jane",
+              "raw": "{{apiUrl}}/trailers?favorited=jane",
               "host": [
                 "{{apiUrl}}"
               ],
               "path": [
-                "articles"
+                "trailers"
               ],
               "query": [{
                 "key": "favorited",
@@ -1385,7 +1385,7 @@
           "response": []
         },
         {
-          "name": "Articles by Tag",
+          "name": "Trailers by Tag",
           "event": [{
             "listen": "test",
             "script": {
@@ -1398,29 +1398,29 @@
                 "if(is200Response){",
                 "    var responseJSON = JSON.parse(responseBody);",
                 "",
-                "    tests['Response contains \"articles\" property'] = responseJSON.hasOwnProperty('articles');",
-                "    tests['Response contains \"articlesCount\" property'] = responseJSON.hasOwnProperty('articlesCount');",
-                "    tests['articlesCount is an integer'] = Number.isInteger(responseJSON.articlesCount);",
+                "    tests['Response contains \"trailers\" property'] = responseJSON.hasOwnProperty('trailers');",
+                "    tests['Response contains \"trailersCount\" property'] = responseJSON.hasOwnProperty('trailersCount');",
+                "    tests['trailersCount is an integer'] = Number.isInteger(responseJSON.trailersCount);",
                 "",
-                "    if(responseJSON.articles.length){",
-                "        var article = responseJSON.articles[0];",
+                "    if(responseJSON.trailers.length){",
+                "        var trailer = responseJSON.trailers[0];",
                 "",
-                "        tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "        tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "        tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "        tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "        tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "        tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "        tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "        tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "        tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "        tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "        tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "        tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "        tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "        tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "        tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "        tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "        tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "        tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "        tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "        tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "        tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "        tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "        tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "        tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "        tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "        tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "        tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "        tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 "    } else {",
-                "        tests['articlesCount is 0 when feed is empty'] = responseJSON.articlesCount === 0;",
+                "        tests['trailersCount is 0 when feed is empty'] = responseJSON.trailersCount === 0;",
                 "    }",
                 "}",
                 ""
@@ -1429,12 +1429,12 @@
           }],
           "request": {
             "url": {
-              "raw": "{{apiUrl}}/articles?tag=dragons",
+              "raw": "{{apiUrl}}/trailers?tag=dragons",
               "host": [
                 "{{apiUrl}}"
               ],
               "path": [
-                "articles"
+                "trailers"
               ],
               "query": [{
                 "key": "tag",
@@ -1463,7 +1463,7 @@
           "response": []
         },
         {
-          "name": "Single Article by slug",
+          "name": "Single Trailer by slug",
           "event": [{
             "listen": "test",
             "script": {
@@ -1471,30 +1471,30 @@
               "exec": [
                 "var responseJSON = JSON.parse(responseBody);",
                 "",
-                "tests['Response contains \"article\" property'] = responseJSON.hasOwnProperty('article');",
+                "tests['Response contains \"trailer\" property'] = responseJSON.hasOwnProperty('trailer');",
                 "",
-                "var article = responseJSON.article || {};",
+                "var trailer = responseJSON.trailer || {};",
                 "",
-                "tests['Article has \"title\" property'] = article.hasOwnProperty('title');",
-                "tests['Article has \"slug\" property'] = article.hasOwnProperty('slug');",
-                "tests['Article has \"body\" property'] = article.hasOwnProperty('body');",
-                "tests['Article has \"createdAt\" property'] = article.hasOwnProperty('createdAt');",
-                "tests['Article\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(article.createdAt).toISOString() === article.createdAt;",
-                "tests['Article has \"updatedAt\" property'] = article.hasOwnProperty('updatedAt');",
-                "tests['Article\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(article.updatedAt).toISOString() === article.updatedAt;",
-                "tests['Article has \"description\" property'] = article.hasOwnProperty('description');",
-                "tests['Article has \"tagList\" property'] = article.hasOwnProperty('tagList');",
-                "tests['Article\\'s \"tagList\" property is an Array'] = Array.isArray(article.tagList);",
-                "tests['Article has \"author\" property'] = article.hasOwnProperty('author');",
-                "tests['Article has \"favorited\" property'] = article.hasOwnProperty('favorited');",
-                "tests['Article has \"favoritesCount\" property'] = article.hasOwnProperty('favoritesCount');",
-                "tests['favoritesCount is an integer'] = Number.isInteger(article.favoritesCount);",
+                "tests['Trailer has \"title\" property'] = trailer.hasOwnProperty('title');",
+                "tests['Trailer has \"slug\" property'] = trailer.hasOwnProperty('slug');",
+                "tests['Trailer has \"body\" property'] = trailer.hasOwnProperty('body');",
+                "tests['Trailer has \"createdAt\" property'] = trailer.hasOwnProperty('createdAt');",
+                "tests['Trailer\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(trailer.createdAt).toISOString() === trailer.createdAt;",
+                "tests['Trailer has \"updatedAt\" property'] = trailer.hasOwnProperty('updatedAt');",
+                "tests['Trailer\\'s \"updatedAt\" property is an ISO 8601 timestamp'] = new Date(trailer.updatedAt).toISOString() === trailer.updatedAt;",
+                "tests['Trailer has \"description\" property'] = trailer.hasOwnProperty('description');",
+                "tests['Trailer has \"tagList\" property'] = trailer.hasOwnProperty('tagList');",
+                "tests['Trailer\\'s \"tagList\" property is an Array'] = Array.isArray(trailer.tagList);",
+                "tests['Trailer has \"author\" property'] = trailer.hasOwnProperty('author');",
+                "tests['Trailer has \"favorited\" property'] = trailer.hasOwnProperty('favorited');",
+                "tests['Trailer has \"favoritesCount\" property'] = trailer.hasOwnProperty('favoritesCount');",
+                "tests['favoritesCount is an integer'] = Number.isInteger(trailer.favoritesCount);",
                 ""
               ]
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles/{{slug}}",
+            "url": "{{apiUrl}}/trailers/{{slug}}",
             "method": "GET",
             "header": [{
                 "key": "Content-Type",
@@ -1518,7 +1518,7 @@
       "name": "Comments",
       "description": "",
       "item": [{
-          "name": "All Comments for Article",
+          "name": "All Comments for Trailer",
           "event": [{
             "listen": "test",
             "script": {
@@ -1550,7 +1550,7 @@
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles/{{slug}}/comments",
+            "url": "{{apiUrl}}/trailers/{{slug}}/comments",
             "method": "GET",
             "header": [{
                 "key": "Content-Type",
@@ -1574,7 +1574,7 @@
           "response": []
         },
         {
-          "name": "Create Comment for Article",
+          "name": "Create Comment for Trailer",
           "event": [{
             "listen": "test",
             "script": {
@@ -1596,7 +1596,7 @@
             }
           }],
           "request": {
-            "url": "{{apiUrl}}/articles/{{slug}}/comments",
+            "url": "{{apiUrl}}/trailers/{{slug}}/comments",
             "method": "POST",
             "header": [{
                 "key": "Content-Type",
@@ -1623,9 +1623,9 @@
           "response": []
         },
         {
-          "name": "Delete Comment for Article",
+          "name": "Delete Comment for Trailer",
           "request": {
-            "url": "{{apiUrl}}/articles/{{slug}}/comments/1",
+            "url": "{{apiUrl}}/trailers/{{slug}}/comments/1",
             "method": "DELETE",
             "header": [{
                 "key": "Content-Type",
@@ -1867,9 +1867,9 @@
       "name": "Cleanup",
       "description": "",
       "item": [{
-        "name": "Delete Article",
+        "name": "Delete Trailer",
         "request": {
-          "url": "{{apiUrl}}/articles/{{slug}}",
+          "url": "{{apiUrl}}/trailers/{{slug}}",
           "method": "DELETE",
           "header": [{
               "key": "Content-Type",

@@ -3,7 +3,7 @@ import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-const API_ROOT = 'http://localhost:3000';
+const API_ROOT = 'http://localhost:3000/api';
 
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
@@ -28,13 +28,13 @@ const requests = {
 
 const Auth = {
   current: () =>
-    requests.get('/user'),
+    requests.get('/users'),
   login: (email, password) =>
-    requests.post('/user/login', { user: { email, password } }),
+    requests.post('/users/login', { user: { email, password } }),
   register: (username, email, password) =>
-    requests.post('/user', { user: { username, email, password } }),
+    requests.post('/users', { user: { username, email, password } }),
   save: user =>
-    requests.put('/user', { user })
+    requests.put('/users', { user })
 };
 
 const Tags = {
@@ -42,8 +42,8 @@ const Tags = {
 };
 
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
-const omitSlug = article => Object.assign({}, article, { slug: undefined })
-const Articles = {
+const omitSlug = trailer => Object.assign({}, trailer, { slug: undefined })
+const Trailers = {
   all: page =>
     requests.get(`/trailers?${limit(10, page)}`),
   byAuthor: (author, page) =>
@@ -63,18 +63,18 @@ const Articles = {
   unfavorite: slug =>
     requests.del(`/trailers/${slug}/favorite`),
   update: trailer =>
-    requests.put(`/trailers/${trailer.id}`, { trailer: omitSlug(trailer) }),
+    requests.put(`/trailers/${trailer.slug}`, { trailer: omitSlug(trailer) }),
   create: trailer =>
     requests.post('/trailers', { trailer })
 };
 
 const Comments = {
   create: (slug, comment) =>
-    requests.post(`/articles/${slug}/comments`, { comment }),
+    requests.post(`/trailers/${slug}/comments`, { comment }),
   delete: (slug, commentId) =>
-    requests.del(`/articles/${slug}/comments/${commentId}`),
-  forArticle: slug =>
-    requests.get(`/articles/${slug}/comments`)
+    requests.del(`/trailers/${slug}/comments/${commentId}`),
+  forTrailer: slug =>
+    requests.get(`/trailers/${slug}/comments`)
 };
 
 const Profile = {
@@ -87,7 +87,7 @@ const Profile = {
 };
 
 export default {
-  Articles,
+  Trailers,
   Auth,
   Comments,
   Profile,

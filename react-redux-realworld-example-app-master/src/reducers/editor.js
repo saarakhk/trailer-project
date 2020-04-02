@@ -13,12 +13,12 @@ export default (state = {}, action) => {
     case EDITOR_PAGE_LOADED:
       return {
         ...state,
-        articleSlug: action.payload ? action.payload.article.slug : '',
-        title: action.payload ? action.payload.article.title : '',
-        description: action.payload ? action.payload.article.description : '',
-        body: action.payload ? action.payload.article.body : '',
+        trailerSlug: action.payload ? action.payload.trailer.slug : '',
+        title: action.payload ? action.payload.trailer.title : '',
+        description: action.payload ? action.payload.trailer.description : '',
+        body: action.payload ? action.payload.trailer.body : '',
         tagInput: '',
-        tagList: action.payload ? action.payload.article.tagList : []
+        tagList: action.payload ? action.payload.trailer.tagList : []
       };
     case EDITOR_PAGE_UNLOADED:
       return {};

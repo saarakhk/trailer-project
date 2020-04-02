@@ -54,17 +54,17 @@ class Editor extends React.Component {
 
     this.submitForm = ev => {
       ev.preventDefault();
-      const article = {
+      const trailer = {
         title: this.props.title,
         description: this.props.description,
         body: this.props.body,
         tagList: this.props.tagList
       };
 
-      const slug = { slug: this.props.articleSlug };
-      const promise = this.props.articleSlug ?
-        agent.Articles.update(Object.assign(article, slug)) :
-        agent.Articles.create(article);
+      const slug = { slug: this.props.trailerSlug };
+      const promise = this.props.trailerSlug ?
+        agent.Trailers.update(Object.assign(trailer, slug)) :
+        agent.Trailers.create(trailer);
 
       this.props.onSubmit(promise);
     };
@@ -74,7 +74,7 @@ class Editor extends React.Component {
     if (this.props.match.params.slug !== nextProps.match.params.slug) {
       if (nextProps.match.params.slug) {
         this.props.onUnload();
-        return this.props.onLoad(agent.Articles.get(this.props.match.params.slug));
+        return this.props.onLoad(agent.Trailers.get(this.props.match.params.slug));
       }
       this.props.onLoad(null);
     }
@@ -82,7 +82,7 @@ class Editor extends React.Component {
 
   componentWillMount() {
     if (this.props.match.params.slug) {
-      return this.props.onLoad(agent.Articles.get(this.props.match.params.slug));
+      return this.props.onLoad(agent.Trailers.get(this.props.match.params.slug));
     }
     this.props.onLoad(null);
   }

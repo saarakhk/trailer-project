@@ -18,42 +18,42 @@ export default (state = {}, action) => {
     case ARTICLE_UNFAVORITED:
       return {
         ...state,
-        articles: state.articles.map(article => {
-          if (article.slug === action.payload.article.slug) {
+        trailers: state.trailers.map(trailer => {
+          if (trailer.slug === action.payload.trailer.slug) {
             return {
-              ...article,
-              favorited: action.payload.article.favorited,
-              favoritesCount: action.payload.article.favoritesCount
+              ...trailer,
+              favorited: action.payload.trailer.favorited,
+              favoritesCount: action.payload.trailer.favoritesCount
             };
           }
-          return article;
+          return trailer;
         })
       };
     case SET_PAGE:
       return {
         ...state,
-        articles: action.payload.articles,
-        articlesCount: action.payload.articlesCount,
+        trailers: action.payload.trailers,
+        trailersCount: action.payload.trailersCount,
         currentPage: action.page
       };
     case APPLY_TAG_FILTER:
       return {
         ...state,
         pager: action.pager,
-        articles: action.payload.articles,
-        articlesCount: action.payload.articlesCount,
+        trailers: action.payload.trailers,
+        trailersCount: action.payload.trailersCount,
         tab: null,
         tag: action.tag,
         currentPage: 0
       };
     case HOME_PAGE_LOADED: {
-      console.log(action)
+      console.log("mis see on", action)
       return {
         ...state,
         pager: action.pager,
         tags: action.payload[0].tags,
-        articles: action.payload[1].articles,
-        articlesCount: action.payload[1].articlesCount,
+        trailers: action.payload[1].trailers,
+        trailersCount: action.payload[1].trailersCount,
         currentPage: 0,
         tab: action.tab
       };
@@ -64,8 +64,8 @@ export default (state = {}, action) => {
       return {
         ...state,
         pager: action.pager,
-        articles: action.payload.articles,
-        articlesCount: action.payload.articlesCount,
+        trailers: action.payload.trailers,
+        trailersCount: action.payload.trailersCount,
         tab: action.tab,
         currentPage: 0,
         tag: null
@@ -75,8 +75,8 @@ export default (state = {}, action) => {
       return {
         ...state,
         pager: action.pager,
-        articles: action.payload[1].articles,
-        articlesCount: action.payload[1].articlesCount,
+        trailers: action.payload[1].trailers,
+        trailersCount: action.payload[1].trailersCount,
         currentPage: 0
       };
     case PROFILE_PAGE_UNLOADED:

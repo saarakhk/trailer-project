@@ -9,23 +9,23 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: DELETE_ARTICLE, payload })
 });
 
-const ArticleActions = props => {
-  const article = props.article;
+const TrailerActions = props => {
+  const trailer = props.trailer;
   const del = () => {
-    props.onClickDelete(agent.Articles.del(article.slug))
+    props.onClickDelete(agent.Trailers.del(trailer.slug))
   };
   if (props.canModify) {
     return (
       <span>
 
         <Link
-          to={`/editor/${article.slug}`}
+          to={`/editor/${trailer.slug}`}
           className="btn btn-outline-secondary btn-sm">
-          <i className="ion-edit"></i> Edit Article
+          <i className="ion-edit"></i> Edit Trailer
         </Link>
 
         <button className="btn btn-outline-danger btn-sm" onClick={del}>
-          <i className="ion-trash-a"></i> Delete Article
+          <i className="ion-trash-a"></i> Delete Trailer
         </button>
 
       </span>
@@ -38,4 +38,4 @@ const ArticleActions = props => {
   );
 };
 
-export default connect(() => ({}), mapDispatchToProps)(ArticleActions);
+export default connect(() => ({}), mapDispatchToProps)(TrailerActions);

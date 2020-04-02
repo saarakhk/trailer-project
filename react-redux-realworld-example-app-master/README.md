@@ -44,30 +44,30 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 
 - Authenticate users via JWT (login/signup pages + logout button on settings page)
 - CRU* users (sign up & settings page - no deleting required)
-- CRUD Articles
-- CR*D Comments on articles (no updating required)
-- GET and display paginated lists of articles
-- Favorite articles
+- CRUD Trailers
+- CR*D Comments on trailers (no updating required)
+- GET and display paginated lists of trailers
+- Favorite trailers
 - Follow other users
 
 **The general page breakdown looks like this:**
 
 - Home page (URL: /#/ )
     - List of tags
-    - List of articles pulled from either Feed, Global, or by Tag
-    - Pagination for list of articles
+    - List of trailers pulled from either Feed, Global, or by Tag
+    - Pagination for list of trailers
 - Sign in/Sign up pages (URL: /#/login, /#/register )
     - Use JWT (store the token in localStorage)
 - Settings page (URL: /#/settings )
-- Editor page to create/edit articles (URL: /#/editor, /#/editor/article-slug-here )
-- Article page (URL: /#/article/article-slug-here )
-    - Delete article button (only shown to article's author)
+- Editor page to create/edit trailers (URL: /#/editor, /#/editor/trailer-id-here )
+- Trailer page (URL: /#/trailer/trailer-id-here )
+    - Delete trailer button (only shown to trailer's author)
     - Render markdown from server client side
     - Comments section at bottom of page
     - Delete comment button (only shown to comment's author)
 - Profile page (URL: /#/@username, /#/@username/favorites )
     - Show basic user info
-    - List of articles populated from author's created articles or author's favorited articles
+    - List of trailers populated from author's created trailers or author's favorited trailers
 
 <br />
 
