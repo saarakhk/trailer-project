@@ -159,9 +159,9 @@ router.post('/users/login', function(req, res, next){
 });
 /**
  * @swagger
- * /api/users:
+ * /api/users/login:
  *   post:
- *     summary: Creates a new user
+ *     summary: Logs in a user
  *     description:
  *       "Required roles: `admin`"
  *     tags:
@@ -173,18 +173,14 @@ router.post('/users/login', function(req, res, next){
  *         schema:
  *           type: object
  *           required:
- *             - username
  *             - email
  *             - password
  *           properties:
- *             username:
- *               type: string
  *             email:
  *               type: string
  *             password:
  *               type: password
  *           example: {
- *             "username": "someUser",
  *             "email": "some@email",
  *             "password": "somePassword"
  *           }
@@ -195,15 +191,15 @@ router.post('/users/login', function(req, res, next){
  *           properties:
  *             id:
  *               type: integer
- *             username:
+ *             email:
  *               type: string
  *         examples:
  *           application/json: {
  *             "id": 1,
- *             "username": "someuser"
+ *             "email": "some@user"
  *           }
  *       409:
- *         description: When the username is already in use
+ *         description: When the email is already in use
  */
 router.post('/users', function(req, res, next){
   var user = new User();
