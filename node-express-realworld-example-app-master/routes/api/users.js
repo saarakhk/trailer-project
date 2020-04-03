@@ -4,6 +4,55 @@ var passport = require('passport');
 var User = mongoose.model('User');
 var auth = require('../auth');
 
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: gets a user
+ *     description:
+ *       "Required roles: `admin`"
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       - name: user
+ *         in: body
+ *         required: true
+ *         schema:
+ *           type: object
+ *           required:
+ *             - username
+ *             - email
+ *             - password
+ *           properties:
+ *             username:
+ *               type: string
+ *             email:
+ *               type: string
+ *             password:
+ *               type: password
+ *           example: {
+ *             "username": "someUser",
+ *             "email": "some@email",
+ *             "password": "somePassword"
+ *           }
+ *     responses:
+ *       200:
+ *         schema:
+ *           type: object
+ *           properties:
+ *             id:
+ *               type: integer
+ *             username:
+ *               type: string
+ *         examples:
+ *           application/json: {
+ *             "id": 1,
+ *             "username": "someuser"
+ *           }
+ *       409:
+ *         description: When the username is already in use
+ */
+
 router.get('/user', auth.required, function(req, res, next){
   User.findById(req.payload.id).then(function(user){
     if(!user){ return res.sendStatus(401); }
@@ -11,6 +60,55 @@ router.get('/user', auth.required, function(req, res, next){
     return res.json({user: user.toAuthJSON()});
   }).catch(next);
 });
+
+/**
+ * @swagger
+ * /api/users:
+ *   put:
+ *     summary: changes the user
+ *     description:
+ *       "Required roles: `admin`"
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       - name: user
+ *         in: body
+ *         required: true
+ *         schema:
+ *           type: object
+ *           required:
+ *             - username
+ *             - email
+ *             - password
+ *           properties:
+ *             username:
+ *               type: string
+ *             email:
+ *               type: string
+ *             password:
+ *               type: password
+ *           example: {
+ *             "username": "someUser",
+ *             "email": "some@email",
+ *             "password": "somePassword"
+ *           }
+ *     responses:
+ *       200:
+ *         schema:
+ *           type: object
+ *           properties:
+ *             id:
+ *               type: integer
+ *             username:
+ *               type: string
+ *         examples:
+ *           application/json: {
+ *             "id": 1,
+ *             "username": "someuser"
+ *           }
+ *       409:
+ *         description: When the username is already in use
+ */
 
 router.put('/user', auth.required, function(req, res, next){
   User.findById(req.payload.id).then(function(user){

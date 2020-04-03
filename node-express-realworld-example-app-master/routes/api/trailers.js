@@ -28,13 +28,7 @@ router.param('comment', function(req, res, next, id) {
   }).catch(next);
 });
 
-////////////////////
-/**
- * @swagger
- * /api/trailers:
- *    get:
- *      description: This should return all trailers
- */
+
 router.get('/', auth.optional, function(req, res, next) {
   var query = {};
   var limit = 20;
@@ -129,13 +123,7 @@ router.get('/feed', auth.required, function(req, res, next) {
   });
 });
 
-/**
- * @swagger
- * /api/trailers:
- *    post:
- *      description: This should create trailer
 
- */
 
 router.post('/', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
@@ -193,6 +181,9 @@ router.put('/:trailer', auth.required, function(req, res, next) {
 });
 
 // delete trailer
+
+////////////////////
+
 router.delete('/:trailer', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
