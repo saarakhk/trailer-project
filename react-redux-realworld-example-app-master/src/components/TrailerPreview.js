@@ -58,7 +58,7 @@ const TrailerPreview = props => {
 
       <Link to={`/trailer/${trailer.slug}`} className="preview-link">
         <h1>{trailer.title}</h1>
-        <p>{trailer.description}</p>
+        <p>{trailer.location}</p>
         <span>Read more...</span>
         <ul className="tag-list">
           {

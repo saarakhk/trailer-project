@@ -6,7 +6,7 @@ var User = mongoose.model('User');
 var TrailerSchema = new mongoose.Schema({
   slug: {type: String, lowercase: true, unique: true},
   title: String,
-  description: String,
+  location: String,
   body: String,
   favoritesCount: {type: Number, default: 0},
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
@@ -42,7 +42,7 @@ TrailerSchema.methods.toJSONFor = function(user){
   return {
     slug: this.slug,
     title: this.title,
-    description: this.description,
+    location: this.location,
     body: this.body,
     createdAt: this.createdAt,
     updatedAt: this.updatedAt,

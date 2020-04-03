@@ -15,7 +15,7 @@ export default (state = {}, action) => {
         ...state,
         trailerSlug: action.payload ? action.payload.trailer.slug : '',
         title: action.payload ? action.payload.trailer.title : '',
-        description: action.payload ? action.payload.trailer.description : '',
+        location: action.payload ? action.payload.trailer.location : '',
         body: action.payload ? action.payload.trailer.body : '',
         tagInput: '',
         tagList: action.payload ? action.payload.trailer.tagList : []

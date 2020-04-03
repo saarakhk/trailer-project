@@ -34,8 +34,6 @@ router.param('comment', function(req, res, next, id) {
  * /api/trailers:
  *    get:
  *      description: This should return all trailers
- *      
- *      
  */
 router.get('/', auth.optional, function(req, res, next) {
   var query = {};
@@ -136,7 +134,9 @@ router.get('/feed', auth.required, function(req, res, next) {
  * /api/trailers:
  *    post:
  *      description: This should create trailer
+
  */
+
 router.post('/', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
@@ -152,7 +152,6 @@ router.post('/', auth.required, function(req, res, next) {
   }).catch(next);
 });
 
-// return a trailer
 router.get('/:trailer', auth.optional, function(req, res, next) {
   Promise.all([
     req.payload ? User.findById(req.payload.id) : null,
@@ -172,8 +171,8 @@ router.put('/:trailer', auth.required, function(req, res, next) {
         req.trailer.title = req.body.trailer.title;
       }
 
-      if(typeof req.body.trailer.description !== 'undefined'){
-        req.trailer.description = req.body.trailer.description;
+      if(typeof req.body.trailer.location!== 'undefined'){
+        req.trailer.location = req.body.trailer.location;
       }
 
       if(typeof req.body.trailer.body !== 'undefined'){

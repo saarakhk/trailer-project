@@ -37,7 +37,7 @@ class Editor extends React.Component {
     const updateFieldEvent =
       key => ev => this.props.onUpdateField(key, ev.target.value);
     this.changeTitle = updateFieldEvent('title');
-    this.changeDescription = updateFieldEvent('description');
+    this.changeLocation = updateFieldEvent('location');
     this.changeBody = updateFieldEvent('body');
     this.changeTagInput = updateFieldEvent('tagInput');
 
@@ -56,7 +56,7 @@ class Editor extends React.Component {
       ev.preventDefault();
       const trailer = {
         title: this.props.title,
-        description: this.props.description,
+        location: this.props.location,
         body: this.props.body,
         tagList: this.props.tagList
       };
@@ -117,8 +117,8 @@ class Editor extends React.Component {
                       className="form-control"
                       type="text"
                       placeholder="What's the trailer location?"
-                      value={this.props.description}
-                      onChange={this.changeDescription} />
+                      value={this.props.location}
+                      onChange={this.changeLocation} />
                   </fieldset>
 
                   <fieldset className="form-group">
