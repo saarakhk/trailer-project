@@ -20,37 +20,14 @@ var auth = require('../auth');
  *         schema:
  *           type: object
  *           required:
- *             - username
- *             - email
- *             - password
- *           properties:
- *             username:
- *               type: string
- *             email:
- *               type: string
- *             password:
- *               type: password
- *           example: {
- *             "username": "someUser",
- *             "email": "some@email",
- *             "password": "somePassword"
- *           }
- *     responses:
- *       200:
- *         schema:
- *           type: object
+ *             - id
  *           properties:
  *             id:
- *               type: integer
- *             username:
  *               type: string
- *         examples:
- *           application/json: {
- *             "id": 1,
- *             "username": "someuser"
+ *           example: {
+ *             "id": "someId",
  *           }
- *       409:
- *         description: When the username is already in use
+
  */
 
 router.get('/user', auth.required, function(req, res, next){
@@ -79,17 +56,25 @@ router.get('/user', auth.required, function(req, res, next){
  *           required:
  *             - username
  *             - email
+ *             - bio
+ *             - image
  *             - password
  *           properties:
  *             username:
  *               type: string
  *             email:
  *               type: string
+ *             bio:
+ *               type: string
+ *             image:
+ *               type:
  *             password:
  *               type: password
  *           example: {
  *             "username": "someUser",
  *             "email": "some@email",
+ *             "bio": "some bio",
+ *             "image": "someurl",
  *             "password": "somePassword"
  *           }
  *     responses:
@@ -203,6 +188,56 @@ router.post('/users/login', function(req, res, next){
   })(req, res, next);
 });
 
+
+
+/**
+ * @swagger
+ * /api/users:
+ *   post:
+ *     summary: create a user
+ *     description:
+ *       "Required roles: `admin`"
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       - name: user
+ *         in: body
+ *         required: true
+ *         schema:
+ *           type: object
+ *           required:
+ *             - username
+ *             - email
+ *             - password
+ *           properties:
+ *             username:
+ *               type: string
+ *             email:
+ *               type: string
+ *             password:
+ *               type: password
+ *           example: {
+ *             "username": "someUser",
+ *             "email": "some@email",
+ *             "password": "somePassword"
+ *           }
+ *     responses:
+ *       200:
+ *         schema:
+ *           type: object
+ *           properties:
+ *             id:
+ *               type: integer
+ *             username:
+ *               type: string
+ *         examples:
+ *           application/json: {
+ *             "id": 1,
+ *             "username": "someuser"
+ *           }
+ *       409:
+ *         description: When the username is already in use
+ */
 router.post('/users', function(req, res, next){
   var user = new User();
 
