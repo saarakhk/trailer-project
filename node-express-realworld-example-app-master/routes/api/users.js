@@ -4,33 +4,22 @@ var passport = require('passport');
 var User = mongoose.model('User');
 var auth = require('../auth');
 
+
+
 /**
  * @swagger
- * /user:
+ * /users:
  *   get:
- *     summary: gets a user
+ *     summary: gets current user
+ *     security:
+ *       - auth: []
  *     description:
  *       "Required roles: `admin`"
  *     tags:
  *       - Users
- *     parameters:
- *       - name: user
- *         in: body
- *         required: true
- *         schema:
- *           type: object
- *           required:
- *             - id
- *           properties:
- *             id:
- *               type: string
- *           example: {
- *             "id": "someId",
- *           }
-
  */
 
-router.get('/user', auth.required, function(req, res, next){
+router.get('/users', auth.required, function(req, res, next){
   User.findById(req.payload.id).then(function(user){
     if(!user){ return res.sendStatus(401); }
 
@@ -144,7 +133,7 @@ router.put('/user', auth.required, function(req, res, next){
  *             email:
  *               type: string
  *             password:
- *               type: password
+ *               type: string
  *           example: {
  *             "email": "some@email",
  *             "password": "somePassword"
@@ -154,9 +143,9 @@ router.put('/user', auth.required, function(req, res, next){
  *         schema:
  *           type: object
  *           properties:
- *             id:
- *               type: integer
  *             email:
+ *               type: string
+ *             password:
  *               type: string
  *         examples:
  *           application/json: {
@@ -192,7 +181,7 @@ router.post('/users/login', function(req, res, next){
 
 /**
  * @swagger
- * /user:
+ * /users:
  *   post:
  *     tags:
  *      - user

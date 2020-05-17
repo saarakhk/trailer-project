@@ -123,22 +123,84 @@ router.get('/feed', auth.required, function(req, res, next) {
   });
 });
 
+/*
+Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYWViOTEwODIxODhiMGYzMjRmODMwOCIsInVzZXJuYW1lIjoic2FhcmExMjMiLCJleHAiOjE1OTQ5MDcyMTcsImlhdCI6MTU4OTcyMzIxN30.jv5WHBbQdDl5yplWTqWpykStim_kVhZubeivZQZtUaw
+{
+  "trailer": {
+    "body": "123",
+    "location": "123",
+    "title": "123",
+    "tagList": []
+  }
+}
+*/
+
+
+/**
+ * @swagger
+ * /trailers:
+ *   post:
+ *     summary: changes the trailer
+ *     security:
+ *       - auth: []
+ *     description:
+ *       "Required roles: `admin`"
+ *     tags:
+ *       - trailer
+ *     requestBody:
+ *         description: Optional
+ *         required: true
+ *         content:
+ *           application/json:
+ *              schema:
+ *                type: object
+ *                required:
+ *                - trailer
+ *                properties:
+ *                  trailer:
+ *                    type: object
+ *                    schema:
+ *                           type: object
+ *                           required:
+ *                           - title
+ *                           - location
+ *                           - body
+ *                           - tagList
+ *                           properties:
+ *                             title:
+ *                               type: string
+ *                             location:
+ *                               type: string
+ *                             body:
+ *                               type: string
+ *                             tagList:
+ *                               type: string
+ *                    example: {
+ *                      "body": "123",
+ *                      "location": "123",
+ *                      "title": "123",
+ *                      "tagList": []
+ *                   }
+ */
 
 
 router.post('/', auth.required, function(req, res, next) {
+  // console.log('test payload', req.payload, req.body)
   User.findById(req.payload.id).then(function(user){
+    // console.log('test user', user)
     if (!user) { return res.sendStatus(401); }
-
+    // console.log('test trailer', req.body.trailer)
     var trailer = new Trailer(req.body.trailer);
-
+    // console.log('test EI ILMU', req.body.trailer)
     trailer.author = user;
 
     return trailer.save().then(function(){
-      console.log(trailer.author);
+      console.log('test author', trailer.author);
       return res.json({trailer: trailer.toJSONFor(user)});
     });
   }).catch(next);
 });
+
 
 router.get('/:trailer', auth.optional, function(req, res, next) {
   Promise.all([
@@ -151,8 +213,65 @@ router.get('/:trailer', auth.optional, function(req, res, next) {
   }).catch(next);
 });
 
+
+
+/**
+ * @swagger
+ * /trailers/{slug}:
+ *   put:
+ *     summary: update the trailer by SLUG
+ *     security:
+ *       - auth: []
+ *     description:
+ *       "Required roles: `admin`"
+ *     tags:
+ *       - trailer
+ *     parameters:
+ *     - in: path
+ *       name: slug
+ *       schema:
+ *          type: string
+ *       required: true
+ *       description: slug of the trailer
+ *     requestBody:
+ *         description: Optional
+ *         required: true
+ *         content:
+ *           application/json:
+ *              schema:
+ *                type: object
+ *                required:
+ *                - trailer
+ *                properties:
+ *                  trailer:
+ *                    type: object
+ *                    schema:
+ *                           type: object
+ *                           required:
+ *                           - title
+ *                           - location
+ *                           - body
+ *                           - tagList
+ *                           properties:
+ *                             title:
+ *                               type: string
+ *                             location:
+ *                               type: string
+ *                             body:
+ *                               type: string
+ *                             tagList:
+ *                               type: string
+ *                    example: {
+ *                      "body": "123",
+ *                      "location": "123",
+ *                      "title": "123",
+ *                      "tagList": []
+ *                   }
+ */
+
 // update trailer
 router.put('/:trailer', auth.required, function(req, res, next) {
+  console.log('test', req, res, next)
   User.findById(req.payload.id).then(function(user){
     if(req.trailer.author._id.toString() === req.payload.id.toString()){
       if(typeof req.body.trailer.title !== 'undefined'){
@@ -182,7 +301,25 @@ router.put('/:trailer', auth.required, function(req, res, next) {
 
 // delete trailer
 
-////////////////////
+/**
+ * @swagger
+ * /trailers/{slug}:
+ *   delete:
+ *     summary: delete the trailer by SLUG
+ *     security:
+ *       - auth: []
+ *     description:
+ *       "Required roles: `admin`"
+ *     tags:
+ *       - trailer
+ *     parameters:
+ *     - in: path
+ *       name: slug
+ *       schema:
+ *          type: string
+ *       required: true
+ *       description: slug of the trailer
+ */
 
 router.delete('/:trailer', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){

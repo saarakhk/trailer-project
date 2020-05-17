@@ -59,15 +59,17 @@ const options = {
     openapi: '3.0.1',
     components: {
       securitySchemes: {
-        bearerAuth: {
-          type: 'http',
-          scheme: 'bearer',
-          bearerFormat: 'JWT',
+        auth: {
+          type: 'apiKey',
+          name: 'authorization',
+          in: 'header',
+          // scheme: 'basic',
+          // bearerFormat: 'JWT',
         }
       }
     },
     security: [{
-      bearerAuth: []
+      auth: [],
     }]
   },
   // List of files to be processes. You can also set globs './routes/*.js'
