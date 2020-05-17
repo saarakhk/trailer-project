@@ -7,6 +7,9 @@ import reducer from './reducer';
 import { routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory';
 
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
 export const history = createHistory();
 
 // Build the middleware for intercepting and dispatching navigation actions
@@ -21,5 +24,16 @@ const getMiddleware = () => {
   }
 };
 
-export const store = createStore(
-  reducer, composeWithDevTools(getMiddleware()));
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+// export default () => {
+  export let store = createStore(
+    persistedReducer, composeWithDevTools(getMiddleware()));
+  export let persistor = persistStore(store)
+  // return { store, persistor, history }
+// }

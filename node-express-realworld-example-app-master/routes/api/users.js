@@ -6,7 +6,7 @@ var auth = require('../auth');
 
 /**
  * @swagger
- * /api/users:
+ * /user:
  *   get:
  *     summary: gets a user
  *     description:
@@ -40,7 +40,7 @@ router.get('/user', auth.required, function(req, res, next){
 
 /**
  * @swagger
- * /api/users:
+ * /user:
  *   put:
  *     summary: changes the user
  *     description:
@@ -124,7 +124,7 @@ router.put('/user', auth.required, function(req, res, next){
 
 /**
  * @swagger
- * /api/users/login:
+ * /users/login:
  *   post:
  *     summary: Logs in a user
  *     description:
@@ -192,51 +192,50 @@ router.post('/users/login', function(req, res, next){
 
 /**
  * @swagger
- * /api/users:
+ * /user:
  *   post:
- *     summary: create a user
- *     description:
- *       "Required roles: `admin`"
  *     tags:
- *       - Users
- *     parameters:
- *       - name: user
- *         in: body
- *         required: true
- *         schema:
- *           type: object
- *           required:
- *             - username
- *             - email
- *             - password
- *           properties:
- *             username:
- *               type: string
- *             email:
- *               type: string
- *             password:
- *               type: password
- *           example: {
- *             "username": "someUser",
- *             "email": "some@email",
- *             "password": "somePassword"
- *           }
+ *      - user
+ *     summary: Create user TEST
+ *     description: Add a new user
+ *     operationId: createUser
  *     responses:
- *       200:
- *         schema:
- *           type: object
- *           properties:
- *             id:
- *               type: integer
- *             username:
- *               type: string
- *         examples:
- *           application/json: {
- *             "id": 1,
- *             "username": "someuser"
- *           }
- *       409:
- *         description: When the username is already in use
+ *       default:
+ *         description: successful operation
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *       description: Created user object
+ *       required: true
+ *   put:
+ *     tags:
+ *       - user
+ *     summary: Update user
+ *     description: Update an existing user
+ *     operationId: updateUser
+ *     security:
+ *       - trailers_auth: []
+ *     
+ *       
+ *     responses:
+ *       '200':
+ *         description: User logged in
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     username:
+ *                       type: string
+ *                     email:
+ *                       type: string
+ *                     token:
+ *                       type: string
  */
 router.post('/users', function(req, res, next){
   var user = new User();
